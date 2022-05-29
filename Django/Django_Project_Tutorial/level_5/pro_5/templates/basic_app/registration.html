@@ -1,0 +1,23 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+  {% if registered %}               ################ registered : returned by 'register' view ###################
+    <h1>Thank you for registering...</h1>
+  {% else %}
+    <h1>Please Register Here...</h1>
+    <h3>Fill Out The Form : </h3>
+
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      {{ user_form.as_p }}        ########### registered : returned by 'register' view ##############
+      {{ profile_form.as_p }}     ########### registered : returned by 'register' view ##############
+      <input type="submit" name="" value="Register">
+    </form>
+
+    {% endif %}
+</div>
+
+{% endblock %}

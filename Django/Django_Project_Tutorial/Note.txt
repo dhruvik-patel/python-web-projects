@@ -1,0 +1,7 @@
+sec_pro1 is actually sec_pro.
+So,when you want to use it for example change its name to sec_pro.
+
+Work Flow for sec_pro(copied):
+index.html AND users.html
+forms.py
+views.py

@@ -1,0 +1,27 @@
+from django import  forms
+from django.contrib.auth.models import User
+from django.db import models
+from django.contrib.auth.models import User
+from django.urls import path
+from basic_app import views
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import  timezone
+from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponseRedirect,HttpResponse
+from django.urls import reverse                             # Import from urls
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+{% load static %}
+
+from django.contrib import admin
+from django.urls import path
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+
+
+
+
+
+user = models.OneToOneField(User,on_delete=models.CASCADE)   # When U Add Foreign Key

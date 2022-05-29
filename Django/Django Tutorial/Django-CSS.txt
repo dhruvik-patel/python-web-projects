@@ -1,0 +1,11 @@
+In app blog:
+-create "static" folder
+-create "blog" folder for css files of blog app
+-add/create css files in this "blog" folder
+
+To use this css file in template:
+-load static files in template.html : {% load static %} this must be first line
+-to link html with css : <link ref="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+To access url:
+-href="{% url 'blog-home'%}"

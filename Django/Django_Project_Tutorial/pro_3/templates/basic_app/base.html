@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Base Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="nav navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <ul class="nav navbar">
+          <li class="navbar-brand btn"> <a href="{% url 'index' %}">Brand</a> </li>
+          <li class="navbar-link btn"> <a href="{% url 'basic_app:other' %}">Other</a> </li>
+          <li class="navbar-link btn"> <a href="{% url 'admin:index' %}">Admin</a> </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      {% block body_block %}
+        <!-- This block will be replaced by block of child html file -->
+      {% endblock %}
+
+    </div>
+  </body>
+</html>

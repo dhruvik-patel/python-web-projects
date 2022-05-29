@@ -1,0 +1,67 @@
+-------------------------------------------- PART-2 ----------------------------------------------------
+## Some of these applications make use of at least one database table, though, so we need to create the 
+## tables in the database before we can use them. To do that, run the following command:
+
+
+$ python manage.py migrate
+
+## The migrate command looks at the INSTALLED_APPS setting and creates any necessary database tables according 
+## to the database settings in your mysite/settings.py file and the database migrations shipped with the app 
+## You’ll see a message for each migration it applies.
+
+## If you’re interested, run the command-line client for 
+## your database and type \dt (PostgreSQL), SHOW TABLES; (MariaDB, MySQL),
+## .schema (SQLite), or SELECT TABLE_NAME FROM USER_TABLES; (Oracle) to display the tables Django created.
+
+
+---------------------------------------------------------------------------------------------------------
+# models – essentially, your database layout, with additional metadata.
+
+# polls/models.py : Question and Choices are tables. and que_text,pub_date etc are field of that table.
+import datetime
+from django.db import models
+from django.utils import timezone
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    def __str__(self):
+        return self.question_text
+    def was_published_recently(self):
+        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+    def __str__(self):
+        return self.choice_text
+
+---------------------------------------------------------------------------------------------------------
+## The sqlmigrate command takes migration names and returns their SQL:
+$ python manage.py sqlmigrate polls 0001
+
+## three-step guide to making model changes:
+
+## Change your models (in models.py).
+## Run python manage.py makemigrations to create migrations for those changes
+## Run python manage.py migrate to apply those changes to the database.
+
+---------------------------------------------------------------------------------------------------------
+# Creating an admin user:
+python manage.py createsuperuser
+
+# You should see a few types of editable content: groups and users.
+# They are provided by django.contrib.auth, the authentication framework shipped by Django.
+
+---------------------------------------------------------------------------------------------------------
+# Only one more thing to do: we need to tell the admin that Question objects have an admin interface.
+# To do this, open the polls/admin.py file, and edit it to look like this:
+# polls/admin.py
+
+from django.contrib import admin
+from .models import Question
+
+admin.site.register(Question)
+
+---------------------------------------------------------------------------------------------------------

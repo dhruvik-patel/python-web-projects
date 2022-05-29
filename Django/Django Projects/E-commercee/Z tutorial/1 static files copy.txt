@@ -1,0 +1,8 @@
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+
+run command : python manage.py collectstatic
+
+Effect : It will copy all files from "STATICFILES_DIRS" to "STATIC_ROOT" directory(path)

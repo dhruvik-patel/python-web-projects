@@ -1,0 +1,50 @@
+conda info --envs
+
+Views -> create function
+urls -> add path to function
+settings -> add application to installed apps
+
+Template -> Create index.html for every app
+settings -> Template_Dir create
+views -> import render and call it inside index() function
+
+dhruvik & dhruvikMeshiya
+
+Migration : python manage.py migrate
+	    python manage.py makemigrations PRO_NAME
+	    python manage.py migrate
+
+on_delete=models.CASCADE
+
+#################################### TUTORIAL #########################################
+$ django-admin startproject mysite      #####  poll_project
+$ python manage.py runserver
+$ python manage.py startapp polls       #####  poll_app
+
+
+#######  polls/views.py   #######
+from django.http import HttpResponse
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
+
+
+####### To create a URLconf in the polls directory, create a file called urls.py
+
+
+########## App : polls/urls.py ###################
+from django.urls import path
+from . import views	##  . means appname
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+
+
+######### mysite/urls.py ToCall polls/urls.py ##############
+from django.contrib import admin
+from django.urls import include, path
+urlpatterns = [
+    path('polls/', include('polls.urls')),
+    path('admin/', admin.site.urls),
+]
+
+--------------------------------------------------------PART - 2--------------------------------------------
