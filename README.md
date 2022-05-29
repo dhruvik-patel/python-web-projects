@@ -1,1 +1,3 @@
-"# Personal Projects" 
+# Personal Projects
+
+#### This repo contains my personal projects, so get the fuck out of here...
